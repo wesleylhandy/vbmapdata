@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wesleylhandy/vbmapdata#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.15.4"
   }
 }
