@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- platform.js -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ&callback=initMap"
+  type="text/javascript"></script>
+    <script type="text/javascript">
+    	//Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
+//key=API_KEY
+//this will not function without a publicly accessible kml URL
+var map;
+function initMap() {
+
+  // console.log(url);
+  // console.log(lt + ',' + ln);
+
+  map = new google.maps.Map(document.getElementById("google-map"), {
+    zoom: 10,
+    center: {lat: 36.8529, lng: 75.9780}
+  });
+
+  map.data.loadGeoJson('http://gis-vbgov.opendata.arcgis.com/datasets/99e7d6c6347c4b2280544be268909090_7.geojson');
+
+}
+    </script>
+</head>
+<body>
+<div id="google-map"></div>	
+</body>
+</html>
