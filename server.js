@@ -5,7 +5,7 @@ const app = express();
 var port = process.env.PORT || 3000;
 
 app.get('/base', function(req, res) {
-  res.sendFile(path.join(__dirname, 'doc.geojson'));
+  res.json(path.join(__dirname, 'doc.geojson'));
 });
 
 app.get('/', function(req, res) {
