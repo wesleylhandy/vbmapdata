@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<!-- platform.js -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ&callback=initMap"
-  type="text/javascript"></script>
+
     <script type='text/javascript' src='doc1.geojson'></script>
     <script type="text/javascript">
     	//Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
@@ -24,12 +24,68 @@ function initMap() {
     mapTypeId: 'terrain'
   });
 
-  map.data.addGeoJson(data);
 
-  //https://gis-vbgov.opendata.arcgis.com/datasets/faafa0f1a8b64ffcba5ed262e60c502e_7.geojson
+  map.data.addGeoJson(data, {idPropertyName: 'Name'});
+  map.data.loadGeoJson('https://data.vbgov.com/resource/rqn2-9am9.geojson');
+
+  // $.getJSON('https://data.vbgov.com/resource/rqn2-9am9.json', function(calls) {
+    // var location_count = 0, address_count = 0, no_location =0;
+    /*calls.forEach(function(call) {
+
+      if(call.location_1) {
+          location_count++;
+          console.log({coords: call.location_1.coordinates, type: call.call_type});
+      } else if (call.location_1_address) {
+          address_count++;
+          console.log({address: call.location_1_address, city: call.location_1_city});
+      } else  {
+          no_location++;
+          console.log({type: call.call_type})
+        }
+    });*/
+
+    // console.log({coords: location_count, addresses: address_count, no_location: no_location});
+    // $.get('/base', function(json) {
+      // var features = json.features;
+      // features.forEach(function(feature) {
+      //   console.log({name: feature.properties.Name});
+
+      //   });
+     // });
+ 
+  // });
 
 }
+
+function pointIsInPoly(p, polygon) {
+    var isInside = false;
+    var minX = polygon[0].x, maxX = polygon[0].x;
+    var minY = polygon[0].y, maxY = polygon[0].y;
+    for (var n = 1; n < polygon.length; n++) {
+        var q = polygon[n];
+        minX = Math.min(q.x, minX);
+        maxX = Math.max(q.x, maxX);
+        minY = Math.min(q.y, minY);
+        maxY = Math.max(q.y, maxY);
+    }
+
+    if (p.x < minX || p.x > maxX || p.y < minY || p.y > maxY) {
+        return false;
+    }
+
+    var i = 0, j = polygon.length - 1;
+    for (i, j; i < polygon.length; j = i++) {
+        if ( (polygon[i].y > p.y) != (polygon[j].y > p.y) &&
+                p.x < (polygon[j].x - polygon[i].x) * (p.y - polygon[i].y) / (polygon[j].y - polygon[i].y) + polygon[i].x ) {
+            isInside = !isInside;
+        }
+    }
+
+    return isInside;
+}
     </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ&&libraries=visualization&callback=initMap"
+  type="text/javascript"></script>
     <style>
       html, body {
         height: 100%;
