@@ -7,7 +7,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ&callback=initMap"
   type="text/javascript"></script>
-  
+    <script src='doc.geojson'></script>
     <script type="text/javascript">
     	//Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
 //key=API_KEY
@@ -24,7 +24,7 @@ function initMap() {
     mapTypeId: 'terrain'
   });
 
-  map.data.loadGeoJson('https://vbmaps.herokuapp.com/base');
+  map.data.addGeoJson(data);
 
   //https://gis-vbgov.opendata.arcgis.com/datasets/faafa0f1a8b64ffcba5ed262e60c502e_7.geojson
 

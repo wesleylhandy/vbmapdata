@@ -1,10 +1,12 @@
 const express = require("express");
 const path = require("path");
+const fs = require('fs');
 const app = express();
 // Specify the port.
 var port = process.env.PORT || 3000;
 
 app.get('/base', function(req, res) {
+	var map = fs.readFile('doc.geojson');
   res.json(path.join(__dirname, 'doc.geojson'));
 });
 
