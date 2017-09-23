@@ -19,15 +19,26 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById("google-map"), {
     zoom: 10,
-    center: {lat: 36.8529, lng: 75.9780}
+    center: {lat: 36.8529, lng: -75.9780},
+    mapTypeId: 'terrain'
   });
 
   map.data.loadGeoJson('http://gis-vbgov.opendata.arcgis.com/datasets/faafa0f1a8b64ffcba5ed262e60c502e_7.geojson');
 
 }
     </script>
+    <style>
+      html, body {
+        height: 100%
+        margin: 0;
+        padding: 0;
+      }
+      #google-map {
+        height: 0;
+      }
+    </style>
 </head>
 <body>
-<div id="google-map" style='height: 100vh; width: 100vw;'></div>	
+<div id="google-map"></div>	
 </body>
 </html>
