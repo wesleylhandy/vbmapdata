@@ -19,6 +19,12 @@ app.get('/', function(req, res) {
  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/generate_squares_json', function(req, res) {
+ var generateSquaresJson = require('./generateSquaresJson.js');
+ generateSquaresJson.generate();
+ res.sendFile(path.join(__dirname, 'generate_squares_json.html'));
+});
+
 app.listen(port, function(){
 	console.log('app is listening on ', port);
 });
