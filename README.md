@@ -7,6 +7,6 @@ Our goal is to build a web based tool that takes a count of any item by neighbor
 
 ### How to participate:
 
-1. Join the Trello Project Board (https://trello.com/invite/b/9bGbav8B/869c6beac0f19b7f0edad06d9c3e3500/maps-app) and contribute to the brainstorming process and look for what needs to be done.
+1. Join the [Trello Project Board](https://trello.com/invite/b/9bGbav8B/869c6beac0f19b7f0edad06d9c3e3500/maps-app) and contribute to the brainstorming process and look for what needs to be done.
 2. Fork this Repo, create your own branch and make a pull request.
 3. Attend meetups and contribute to [Code4HR](http://code4hr.org/) projects.
