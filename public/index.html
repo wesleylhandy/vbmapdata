@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+	<!-- platform.js -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script type='text/javascript' src='doc1.geojson'></script>
+    <script type="text/javascript">
+    	//Google Maps API key = AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ
+//key=API_KEY
+//this will not function without a publicly accessible kml URL
+var map;
+function initMap() {
+
+  // console.log(url);
+  // console.log(lt + ',' + ln);
+
+  map = new google.maps.Map(document.getElementById("google-map"), {
+    zoom: 8,
+    center: {lat: 36.8529, lng: -75.9780},
+    mapTypeId: 'terrain'
+  });
+
+
+  map.data.addGeoJson(data, {idPropertyName: 'Name'});
+  //map.data.loadGeoJson('https://data.vbgov.com/resource/rqn2-9am9.geojson');
+
+}
+
+  var controls = document.querySelector('controls');
+
+
+    </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe98CfB0i-_31TjWg52UNcJ0B4i8o3duQ&&libraries=visualization&callback=initMap"
+  type="text/javascript"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        position: relative;
+      }
+      #google-map {
+        height: 100%;
+      }
+
+      .controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 100%;
+        max-width: 200px;
+        height: 75px;
+        border: 1px solid black;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+      }
+    </style>
+</head>
+<body>
+  <div id="google-map"></div>	
+
+  <div class="controls"></div>
+</body>
+</html>

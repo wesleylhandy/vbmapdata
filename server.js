@@ -1,24 +1,34 @@
 const express = require("express");
 const path = require("path");
-const fs = require('fs');
-const request = require('request');
-const cheerio = require('cheerio');
+require('dotenv').config();
+
 const app = express();
 
-// Specify the port.
-var port = process.env.PORT || 3000;
+var assert = require('assert');
+var mongo = require('mongodb').MongoClient;
 
-app.use(express.static('public'));
+var uri = 'mongodb://' + process.env.MLAB_USER + ':' + process.env.MLAB_PASS + '@ds135983.mlab.com:35983/devserver';
 
-app.get('/base', function(req, res) {
-	var map = fs.readFileSync('doc.geojson', 'utf-8');
-  res.json(JSON.parse(map));
-});
+mongo.connect(uri, function(err, db){
+  assert.equal(null, err);
+  console.log("Successfully connected to MongoDB.");
+  var collection = db.collection('neighborhoods');
 
-app.get('/', function(req, res) {
- res.sendFile(path.join(__dirname, 'index.html'));
-});
+  //seed the DB if empty
+  require('./config/seedMongo.js')(collection);
 
-app.listen(port, function(){
-	console.log('app is listening on ', port);
+	// Specify the port.
+	var port = process.env.PORT || 3000;
+
+	app.use(express.static('public'));
+
+	app.get('/', function(req, res) {
+	 res.sendFile(path.join(__dirname, 'index.html'));
+	});
+
+// listen for requests :)
+  var listener = app.listen(process.env.PORT, function () {
+    console.log('Your app is listening on port ' + listener.address().port);
+  });
+  
 });
