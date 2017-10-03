@@ -26,6 +26,13 @@ mongo.connect(uri, function(err, db){
 	 res.sendFile(path.join(__dirname, 'index.html'));
 	});
 
+// 	app.get('/generate_squares_json', function(req, res) {
+//  var generateSquaresJson = require('./generateSquaresJson.js');
+//  generateSquaresJson.generate();
+//  res.sendFile(path.join(__dirname, 'generate_squares_json.html'));
+// });
+
+
 // listen for requests :)
   var listener = app.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
