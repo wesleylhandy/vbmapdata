@@ -26,7 +26,29 @@ function initMap() {
 
 
   map.data.addGeoJson(data, {idPropertyName: 'Name'});
-  //map.data.loadGeoJson('https://data.vbgov.com/resource/rqn2-9am9.geojson');
+
+  /**********************************
+
+  2017 VBPD Service Calls API
+
+  50,000 records each
+
+  Jan - Feb 27
+  https://data.vbgov.com/resource/rqn2-9am9.geojson?$limit=50000&$order=call_date_time&$where=date_extract_y(call_date_time)%20=%202017
+
+  Feb 27 - Apr 24
+  https://data.vbgov.com/resource/rqn2-9am9.geojson?$limit=50000&$offset=50000&$order=call_date_time&$where=date_extract_y(call_date_time)%20=%202017
+
+  Apr 24 - Jun 13
+  https://data.vbgov.com/resource/rqn2-9am9.geojson?$limit=50000&$offset=100000&$order=call_date_time&$where=date_extract_y(call_date_time)%20=%202017
+
+  Jun 13 - July 29
+  https://data.vbgov.com/resource/rqn2-9am9.geojson?$limit=50000&$offset=150000&$order=call_date_time&$where=date_extract_y(call_date_time)%20=%202017
+
+  July 29 - Sept 13 (end of 2017 dataset as of 10/2/17)
+  https://data.vbgov.com/resource/rqn2-9am9.geojson?$limit=50000&$offset=200000&$order=call_date_time&$where=date_extract_y(call_date_time)%20=%202017
+
+  **********************************/
 
 }
 
