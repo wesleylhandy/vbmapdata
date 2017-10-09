@@ -6,12 +6,24 @@ var geoJson = fs.readFileSync('../public/doc.geojson', 'utf-8');
 
 var parsed = JSON.parse(geoJson);
 
-var converted = parsed.features.map(function(feature){
-	return {name: feature.properties.Name, category: 'neighborhoods', location: {
-		type: feature.geometry.type, coordinates: feature.geometry.coordinates
-	}}
+var converted = parsed.features.map(function(feature) {
+
+    //neighborhoods geojson doc has an extra coordinate for each point, plus the order is lat/long
+    var coordinates = feature.geometry.coordinates[0].map(function(set, ind, arr) {
+        return set.map(function(coords) {
+            return [coords[1], coords[0]];
+        });
+    });
+    return {
+        name: feature.properties.Name,
+        category: 'neighborhoods',
+        location: {
+            type: feature.geometry.type,
+            coordinates: [coordinates]
+        }
+    }
 });
 
-fs.writeFile('json/neighborhoods.json', JSON.stringify(converted, null, 5), 'utf-8', function(err) {
-	if(err) console.error(err);
+fs.writeFile('../json/neighborhoods.json', JSON.stringify(converted, null, 2), 'utf-8', function(err) {
+    if (err) console.error(err);
 });
