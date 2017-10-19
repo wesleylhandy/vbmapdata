@@ -20,13 +20,13 @@ mongo.connect(uri, function(err, db) {
 
     /**** DATA IMPORT FUNCTIONS ****/
     // call function seed the DB if empty
-    //require('./config/seedMongo.js')(collection); //DONE!
+    //require('./config/seedMongo.js')(collection);
 
     // erroneous seeds don't follow right-hand rule. rewind and save to db
     //require('./config/unwind.js')(geoErrors); //DONE!
 
     //call function to import service calls into collection
-    require('./config/importServiceCalls')(collection, geoErrors);
+    //require('./config/importServiceCalls')(collection, geoErrors);
 
 
     // Specify the port.

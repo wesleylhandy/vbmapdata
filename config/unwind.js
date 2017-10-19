@@ -27,7 +27,7 @@ module.exports = function(collection) {
                         }
                     });
             });
-
+            console.log('geoErrors seeded');
         }
     });
 

@@ -11,7 +11,7 @@ var converted = parsed.features.map(function(feature) {
     //neighborhoods geojson doc has an extra coordinate for each point, plus the order is lat/long
     var coordinates = feature.geometry.coordinates[0].map(function(set, ind, arr) {
         return set.map(function(coords) {
-            return [coords[1], coords[0]];
+            return [coords[0], coords[1]];
         });
     });
     return {

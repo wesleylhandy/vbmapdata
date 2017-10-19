@@ -32,6 +32,6 @@ module.exports = function(collection) {
                 }
             });
         }
-
+        console.log("Mongo Seeded");
     });
 }
